@@ -1,0 +1,251 @@
+@import url("https://fonts.cdnfonts.com/css/falling-sky");
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --g1: #6604c8;
+    --g2: #e40b6dd3;
+    --g3: #4361EE;
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}
+
+body {
+    animation: background-pan 30s linear infinite;
+    background: linear-gradient( to right, var(--g1), var(--g2), var(--g3), var(--g1));
+    background-size: 200%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+}
+
+.game-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.container {
+    max-width: 1250px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 15px 0;
+}
+
+.header__title {
+    text-align: center;
+    margin: 0;
+    color: black;
+}
+
+.game-section {
+    padding-top: 30px;
+}
+
+.game-section__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-menu__title {
+    margin: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color: black;
+}
+
+.game-menu__difficult-btn {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: #222;
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.game-menu__difficult-btn:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.game-menu__difficult-btn {
+    --color: #370075;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+.game-menu__difficult-btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.game-menu__difficult-btn:hover {
+    color: #fff;
+}
+
+.game-menu__difficult-btn:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+
+.game-menu__difficult-btn:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+.game-menu__difficult-btn:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+}
+
+.restart-btn {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.6em 1.5em;
+    border: 3px solid #7209B7;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    color: #7209B7;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.restart-btn::before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: #7209B7;
+    z-index: -1;
+}
+
+.restart-btn:hover,
+.restart-btn:focus {
+    color: white;
+}
+
+.restart-btn:hover::before,
+.restart-btn:focus::before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+.restart-btn:active {
+    transform: scale(0.9);
+}
+
+.game-table {
+    max-width: 500px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.game-card {
+    width: 50px;
+    height: 120px;
+    flex: 0 0 23%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: purple;
+    border-radius: 5px;
+    transition: all 0.2s linear;
+    margin: 1%;
+}
+
+.game-card i {
+    font-size: 50px;
+    display: none;
+}
+
+.game-card i+i {
+    display: block;
+}
+
+.game-card.flip {
+    background: #5dc6ff !important;
+    transform: perspective(100px) rotateY(180deg);
+    transition: all 0.3s linear;
+}
+
+.game-card.flip-no-transform {
+    background: #5dc6ff !important;
+    transform: none;
+    transition: all 0.3s linear;
+}
+
+.game-card.flip i {
+    display: block;
+}
+
+.game-card.flip i+i {
+    display: none;
+}
+
+.game-card.successfully {
+    background: #76db82 !important;
+}
+
+.game-card:hover {
+    background: #d1d1c0;
+}
+
+.game-card:active {
+    transform: scale(0.95);
+    transition: transform .2s;
+}
